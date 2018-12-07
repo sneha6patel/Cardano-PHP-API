@@ -19,7 +19,7 @@ function cardano_get_all_addresses(string $page = "1", string $per_page = "50") 
       
 
         // CARDANO CLIENT CERT
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
          // QUERY PARAMETERS
         $parameters = array(
@@ -80,7 +80,7 @@ function cardano_get_address_info($address) {
         $port       = "8090";
         $end_point  = "/api/v1/addresses/" . $address;
 
-        $cert_path  = "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path  = "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
@@ -128,7 +128,7 @@ function cardano_create_address(string $wallet_id, string $account_idx, string $
         $host       = "https://127.0.0.1";
         $port       = "8090";
         $end_point  = "/api/v1/addresses/";
-        $cert_path  = "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path  = "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // POST FIELDS
         $post_fields = array(
