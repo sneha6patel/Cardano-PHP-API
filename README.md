@@ -40,9 +40,9 @@ WALLETS:
   Deletes the given Wallet and all its accounts.
 
 
+# Why I Made This..
 
-
-
+Some of you may have struggled with that "other" PHP Cardano API thats available here on Github, I know I did. It was incredibly frustrating that it barely works and I had to do so many tweaks on it to make it barely work that I decided that enough was enough and I would roll my own starting from scratch. So thats what we have here. This is a collection of individual PHP componenets that make up all the various Cardano API endpoints. If you want, please fork it and combine it all into a class or use it in something more formal.
 
 
 
