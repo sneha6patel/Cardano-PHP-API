@@ -19,7 +19,7 @@ function cardano_get_info() {
         $end_point	= "/api/v1/node-info";
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();

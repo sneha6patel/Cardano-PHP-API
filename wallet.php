@@ -4,11 +4,9 @@
 // Function  : Get all the available wallets.
 // Parameters: 
 //
-//				PAGE: 		(string) Page number to display.
-//				DEFAULT: 	1
+//          $page    : (string) The page number you want to get accounts from.
+//          $per_page: (string) The number of entries per page. Value: 1 MIN to 50 MAX
 //
-//				PER_PAGE: 	(string) How many entries per page. Min: 1, Max: 50
-//				DEFAULT:	50 
 //
 
 function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
@@ -30,7 +28,7 @@ function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
 		$end_point	= "/api/v1/wallets/?" . $query;
 
 	    // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
 
         // INIT CURL
@@ -70,7 +68,7 @@ function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
 // Function  : Get details on a speficic wallet by wallet_id.
 // Parameters: 
 //
-//				WALLET_ID: (string) The wallet_id to look up
+//				$wallet_id: (string) The wallet_id to look up
 //
 
 function cardano_get_wallet_by_id(string $wallet_id) {
@@ -82,7 +80,7 @@ function cardano_get_wallet_by_id(string $wallet_id) {
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
@@ -124,7 +122,7 @@ function cardano_get_wallet_by_id(string $wallet_id) {
 // Parameters: 
 //			
 //			$post_fields: array( 
-//             		 "backupPhrase" => "array("word", "word", "word", "word", "word", "word", "word", "word", "word", "word","word", "word")
+//             		 "backupPhrase" => array("word", "word", "word", "word", "word", "word", "word", "word", "word", "word","word", "word")
 //					 "spendingPassword" => Spending password is generated automatically and printed to the screen when the function is completed.
 //					 "assuranceLevel" => "normal" or "strict"
 //             		 "name" => "Wallet Name",
@@ -141,7 +139,7 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
         $end_point  = "/api/v1/wallets/";
 
         // CARDANO CLIENT CERTIFICATE PATH
-        $cert_path  = "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path  = "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // GENERATE SPENDING PASSWORD BECAUSE.. 
         // "Using a computer to randomly generate a passphrase is best, as humans aren't a good source of randomness."
@@ -207,8 +205,8 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
 // Generate  : New spending password is generated automatically and printed to the screen when the function is completed.
 // Parameters: 
 //
-//				WALLET_ID   : (string) The wallet_id of the wallet to change password.
-//				OLD_PASSWORD: (string) The wallets current password.
+//				$wallet_id   : (string) The wallet_id of the wallet to change password.
+//				$old_password: (string) The wallets current password.
 
 function cardano_update_spending_password(string $wallet_id, string $old_password) {
 
@@ -220,7 +218,7 @@ function cardano_update_spending_password(string $wallet_id, string $old_passwor
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // GENERATE NEW SECURE PASSWORD
         $spending_password 			= random_bytes(32);
@@ -281,9 +279,9 @@ function cardano_update_spending_password(string $wallet_id, string $old_passwor
 // Function  : Update a wallets name and assurance level. 
 // Parameters: 
 //
-//				WALLET_ID   	: (string) The wallet_id of the wallet to change name and assurance level.
-//				ASSURANCE_LEVEL : (string) "normal" or "strict"
-//				WALLET_NAME     : (string) The wallets new name.
+//				$wallet_id   	: (string) The wallet_id of the wallet to change name and assurance level.
+//				$assurance_level: (string) "normal" or "strict"
+//				$wallet_name    : (string) The wallets new name.
 //
 
 function cardano_update_wallet(string $wallet_id, string $assurance_level, string $wallet_name) {
@@ -296,7 +294,7 @@ function cardano_update_wallet(string $wallet_id, string $assurance_level, strin
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // PUT FIELDS
         $put_fields = array(
@@ -348,7 +346,7 @@ function cardano_update_wallet(string $wallet_id, string $assurance_level, strin
 // Function  : Delete a wallet and all its associated accounts.
 // Parameters: 
 //
-//				WALLET_ID   : (string) The wallet_id of the wallet to delete.
+//				$wallet_id: (string) The wallet_id of the wallet to delete.
 //
 
 function cardano_delete_wallet(string $wallet_id) {
@@ -361,7 +359,7 @@ function cardano_delete_wallet(string $wallet_id) {
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
