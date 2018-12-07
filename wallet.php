@@ -30,7 +30,7 @@ function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
 		$end_point	= "/api/v1/wallets/?" . $query;
 
 	    // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
 
         // INIT CURL
@@ -82,7 +82,7 @@ function cardano_get_wallet_by_id(string $wallet_id) {
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
@@ -141,7 +141,7 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
         $end_point  = "/api/v1/wallets/";
 
         // CARDANO CLIENT CERTIFICATE PATH
-        $cert_path  = "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path  = "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // GENERATE SPENDING PASSWORD BECAUSE.. 
         // "Using a computer to randomly generate a passphrase is best, as humans aren't a good source of randomness."
@@ -220,7 +220,7 @@ function cardano_update_spending_password(string $wallet_id, string $old_passwor
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // GENERATE NEW SECURE PASSWORD
         $spending_password 			= random_bytes(32);
@@ -296,7 +296,7 @@ function cardano_update_wallet(string $wallet_id, string $assurance_level, strin
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // PUT FIELDS
         $put_fields = array(
@@ -361,7 +361,7 @@ function cardano_delete_wallet(string $wallet_id) {
        
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
