@@ -1,5 +1,12 @@
-# Cardano-PHP-API
-A wrapper for the Cardano API (v1) in PHP 
+# Whats Going On Here?
+A wrapper for the Cardano API (v1) in PHP. 
+
+
+# What You Need To Do:
+
+You'll need to have a Cardano-SL node running on your local server and you'll need to update the $cert_path var to reflect the location of your installation of Cardano-SL.
+
+# What This Can Do For You:
 
 ACCOUNTS: 
   Retrieves a specific Account.
