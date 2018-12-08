@@ -4,7 +4,7 @@ A collection of functions to make interacting with the Cardano SL (v1) API easie
 
 # What You Need To Do:
 
-You'll need to have a Cardano-SL node running on your local server and you'll need to update the $cert_path var to reflect the location of your installation of Cardano SL. 
+You'll need to have [Cardano SL node](https://github.com/input-output-hk/cardano-sl/blob/develop/docs/how-to/build-cardano-sl-and-daedalus-from-source-code.md) running on your local server and you'll need to update the `$cert_path` var to reflect the location of your installation of Cardano SL. 
 
 # What This Can Do For You:
 
