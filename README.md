@@ -8,30 +8,35 @@ You'll need to have a Cardano-SL node running on your local server and you'll ne
 
 # What This Can Do For You:
 
-*ACCOUNTS*: 
+**ACCOUNTS**: 
   1. Retrieves a specific Account.
   2. Update an Account for the given Wallet.
   3. Deletes an Account.
   4. Retrieves the full list of Accounts.
   5. Creates a new Account for the given Wallet.
 
-*ADDRESSES*:
+**ADDRESSES**:
+
   1. Returns a list of the addresses.
   2. Creates a new Address.
   3. Returns interesting information about an address, if available and valid.
 
-*GETINFO*:
+**GETINFO**:
+
   1. Retrieves the dynamic information for this node.
 
-*SETTINGS*:
+**SETTINGS**:
+
   1. Retrieves the static settings for this node.
 
-*TRANSACTIONS*:
+**TRANSACTIONS**:
+
   1. Returns the transaction history, i.e the list of all the past transactions.
   2. Generates a new transaction from the source to one or multiple target addresses.
   3. Estimate the fees which would originate from the payment.
 
-*WALLETS*:
+**WALLETS**:
+
   1. Returns a list of the available wallets.
   2. Creates a new or restores an existing Wallet.
   3. Updates the password for the given Wallet.
