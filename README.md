@@ -46,7 +46,7 @@ You'll need to have a Cardano-SL node running on your local server and you'll ne
 
 # How to use it..
 
-This in and of itself doesnt do anything. Its just a collection of functions for you to include in your project to make wokring with the Cardano SL (v1) API easier if your using PHP. Ive done my best to document and explain how to use each function to make it as easy as possible for anybody to use (even beginners!). 
+This in and of itself doesnt do anything. Its just a collection of functions for you to include in your project to make working with the Cardano SL (v1) API easier if your using PHP. Ive done my best to document and explain how to use each function to make it as easy as possible for anybody to use (even beginners!). 
 
 # Why I Made This..
 
