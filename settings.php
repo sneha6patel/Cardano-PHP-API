@@ -2,7 +2,7 @@
 
 // GET CURRENT NODE SETTINGS
 // Function  : Gets the nodes settings.
-// Parameters: 
+// Parameters:
 //
 //              NONE
 //
@@ -15,11 +15,11 @@ function cardano_settings() {
         $end_point	= "/api/v1/node-settings";
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
-       
+
        	// OPTIONS
         curl_setopt($curl, CURLOPT_URL, $host.':'.$port.$end_point);
         curl_setopt($curl, CURLOPT_AUTOREFERER, TRUE);
@@ -34,7 +34,7 @@ function cardano_settings() {
         // LET'S GET CURLY
         $data       = curl_exec($curl);
         $httpCode   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
- 
+
         // ERRORS
         if(curl_exec($curl) === false)
         {
@@ -48,4 +48,3 @@ function cardano_settings() {
         // GIMME ALL YOUR DATA
         return $data;
 }
-
