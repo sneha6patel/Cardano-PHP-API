@@ -1,6 +1,6 @@
 # Whats Going On Here?
-A wrapper for the Cardano API (v1) in PHP. 
 
+A collection of functions to make interacting with the Cardano SL (v1) API easier when using PHP. 
 
 # What You Need To Do:
 
