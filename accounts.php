@@ -8,14 +8,14 @@
 //
 //
 
-function cardano_get_account_info(string $wallet_id, string $account_idx) {
+function cardano_get_account_info($wallet_id, $account_idx) {
 
         // SETUP
         $host       = "https://127.0.0.1";
         $port       = "8090";
 
         // API ENDPOINT
-        $end_point  = "/api/v1/wallets/" . $wallet_id . "/accounts/" . $account_idx;
+        $end_point  = "/api/v1/wallets/" . $wallet_id . "/accounts/" . (integer)$account_idx;
 
         // CARDANO CLIENT CERTIFICATE
         $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
@@ -61,16 +61,14 @@ function cardano_get_account_info(string $wallet_id, string $account_idx) {
 //				$account_name: (string) The new name for the account.
 //
 
-function cardano_update_account_name(string $wallet_id, string $account_idx, string $account_name) {
+function cardano_update_account_name($wallet_id, $account_idx, $account_name) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
 
 		// API END POINT
-        $end_point	= "/api/v1/wallets/" . $wallet_id . "/accounts/" . $account_idx;
-
-
+        $end_point	= "/api/v1/wallets/" . $wallet_id . "/accounts/" . (integer)$account_idx;
 
         // CARDANO CLIENT CERTIFICATE
         $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
@@ -80,7 +78,6 @@ function cardano_update_account_name(string $wallet_id, string $account_idx, str
 
         // INIT CURL
         $curl = curl_init();
-
 
         $headers = array(
             "Cache-Control: no-cache",
@@ -126,14 +123,14 @@ function cardano_update_account_name(string $wallet_id, string $account_idx, str
 //				$account_idx : (string) The account index of the account you want to delete.
 //
 
-function cardano_delete_account(string $wallet_id, string $account_idx) {
+function cardano_delete_account($wallet_id, $account_idx) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
 
 		// API END POINT
-        $end_point	= "/api/v1/wallets/" . $wallet_id . "/accounts/" . $account_idx;
+        $end_point	= "/api/v1/wallets/" . $wallet_id . "/accounts/" . (integer)$account_idx;
 
 
         // CARDANO CLIENT CERTIFICATE
@@ -181,6 +178,9 @@ function cardano_delete_account(string $wallet_id, string $account_idx) {
 // GET ALL ADDRESSES IN ALL WALLETS
 // Function  : Get all the addresses in all wallets.
 // Parameters:
+//
+//          $wallet_id: The wallet ID to get addresses from.
+//
 // Settings  :
 //
 //          $page    : (string) The page number you want to get accounts from.
@@ -188,8 +188,7 @@ function cardano_delete_account(string $wallet_id, string $account_idx) {
 //
 //
 
-
-function cardano_get_all_accounts(string $wallet_id) {
+function cardano_get_all_accounts($wallet_id) {
 
 		// HOST SETUP
 		$host 		= "https://127.0.0.1";
@@ -205,8 +204,8 @@ function cardano_get_all_accounts(string $wallet_id) {
          // QUERY PARAMETERS
         $settings = array(
 
-                        "page"      => $page,
-                        "per_page"  => $per_page
+                        "page"      => (integer)$page,
+                        "per_page"  => (integer)$per_page
                     );
 
         $query      = http_build_query($settings);
@@ -254,7 +253,7 @@ function cardano_get_all_accounts(string $wallet_id) {
 //				$account_name     : (string) The name of the new account.
 //
 
-function cardano_create_account(string $wallet_id, string $spending_password, string $account_name) {
+function cardano_create_account($wallet_id, $spending_password, $account_name) {
 
         // SETUP
         $host       = "https://127.0.0.1";

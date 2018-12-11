@@ -5,9 +5,6 @@
 // Parameters:
 //
 //				NONE
-// Returns:
-//
-//				CURRENT NODE STATUS
 //
 
 
@@ -16,6 +13,8 @@ function cardano_get_info() {
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
+
+        // API END POINT
         $end_point	= "/api/v1/node-info";
 
         // CARDANO CLIENT CERTIFICATE

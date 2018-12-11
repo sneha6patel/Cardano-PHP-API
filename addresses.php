@@ -1,14 +1,41 @@
 <?php
 
 // GET ALL ADDRESSES IN WALLET
+// Parameters:
+//
+//          NONE
+//
+// Settings  :
+//
+//          $page    : (string) The page number you want to get accounts from.
+//          $per_page: (string) The number of entries per page. Value: 1 MIN to 50 MAX
+//
+//
+
 function cardano_get_all_addresses() {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
-        $end_point	= "/api/v1/addresses";
 
-        $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        // SETTINGS
+        $page = "1";
+        $per_page = "50";
+
+        // CARDANO CLIENT CERTIFICATE
+        $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+
+        // QUERY PARAMETERS
+        $settings = array(
+
+                        "page"      => (integer)$page,
+                        "per_page"  => (integer)$per_page
+                    );
+
+        $query      = http_build_query($settings);
+
+        // API END POINT
+        $end_point  = "/api/v1/wallets/addresses/?" . $query;
 
         // INIT CURL
         $curl = curl_init();
@@ -43,13 +70,22 @@ function cardano_get_all_addresses() {
 }
 
 // GET SPECIFIC ADDRESS INFO <ADDRESS>
+// Function  : Get details about a specific address within a wallet.
+// Parameters:
+//
+//          $address  : (string) The address you want to look up.
+//
+
 function cardano_get_address_info($address) {
 
         // SETUP
         $host       = "https://127.0.0.1";
         $port       = "8090";
+
+        // API END POINT
         $end_point  = "/api/v1/addresses/" . $address;
 
+        // CARDANO CLIENT CERT
         $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
@@ -85,18 +121,30 @@ function cardano_get_address_info($address) {
 }
 
 // CREATE A NEW ADDRESS WITHIN EXISTING WALLET, IF VALID AND AVAILABLE
-function cardano_create_address(string $wallet_id, string $account_idx, string $spending_password) {
+// Function  : Creates a new address within an existing wallet.
+// Parameters:
+//              $wallet_id        : (string) The wallet ID of the wallet you want to create the address in.
+//              $account_idx      : (string) The account index of the account to create the address in.
+//              $spending_password: (string) The wallets spending password.
+//
+
+function cardano_create_address($wallet_id, $account_idx, $spending_password) {
 
         // SETUP
         $host       = "https://127.0.0.1";
         $port       = "8090";
+
+        // API END POINT
         $end_point  = "/api/v1/addresses/";
+
+        // CARDANO CLIENT CERT
         $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // POST FIELDS
+
         $post_fields = array(
-                    "accountIndex"      => $account_idx,
-                    "walletId"          => serialize($wallet_id),
+                    "accountIndex"      => (integer)$account_idx,
+                    "walletId"          => $wallet_id,
                     "spendingPassword"  => $spending_password
                     );
 

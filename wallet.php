@@ -4,24 +4,30 @@
 // Function  : Get all the available wallets.
 // Parameters:
 //
-//				PAGE: 		(string) Page number to display.
-//				DEFAULT: 	1
+//          NONE
 //
-//				PER_PAGE: 	(string) How many entries per page. Min: 1, Max: 50
-//				DEFAULT:	50
+// Settings  :
+//
+//          $page    : (string) The page number you want to get accounts from.
+//          $per_page: (string) The number of entries per page. Value: 1 MIN to 50 MAX
 //
 
-function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
+function cardano_get_all_wallets() {
 
 		// HOST SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
 
+
+        // SETTINGS
+        $page = "1";
+        $per_page = "50";
+
         // QUERY PARAMETERS
         $parameters = array(
 
-				        "page"		=> $page,
-				        "per_page" 	=> $per_page
+				        "page"		=> (integer)$page,
+				        "per_page" 	=> (integer)$per_page
 				    );
 
         $query 		= http_build_query($parameters);
@@ -70,14 +76,16 @@ function cardano_get_all_wallets(string $page = "1", string $per_page = "50") {
 // Function  : Get details on a speficic wallet by wallet_id.
 // Parameters:
 //
-//				WALLET_ID: (string) The wallet_id to look up
+//			$wallet_id: (string) The wallet_id to look up
 //
 
-function cardano_get_wallet_by_id(string $wallet_id) {
+function cardano_get_wallet_by_id($wallet_id) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
+
+        // API END POINT
         $end_point	= "/api/v1/wallets/" . $wallet_id;
 
 
@@ -131,7 +139,7 @@ function cardano_get_wallet_by_id(string $wallet_id) {
 //             		 "operation" => "create" or "restore"
 //           	);
 
-function cardano_create_new_wallet(array $backup_phrase, string $assurance_level, string $wallet_name, string $wallet_operation) {
+function cardano_create_new_wallet($backup_phrase, $assurance_level, $wallet_name, $wallet_operation) {
 
 		// HOST SETUP
         $host       = "https://127.0.0.1";
@@ -140,7 +148,7 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
         // API END POINT
         $end_point  = "/api/v1/wallets/";
 
-        // CARDANO CLIENT CERTIFICATE PATH
+        // CARDANO CLIENT CERTIFICATE
         $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // GENERATE SPENDING PASSWORD BECAUSE..
@@ -158,7 +166,7 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
                     "backupPhrase"      => $backup_phrase,
                     "spendingPassword"  => $spending_password_base16,
                     "assuranceLevel"  	=> $assurance_level,
-                    "name" 				=> serialize($wallet_name),
+                    "name" 				=> $wallet_name,
                     "operation" 		=> $wallet_operation
                     );
 
@@ -208,17 +216,17 @@ function cardano_create_new_wallet(array $backup_phrase, string $assurance_level
 // Generate  : New spending password is generated automatically and printed to the screen when the function is completed.
 // Parameters:
 //
-//				WALLET_ID   : (string) The wallet_id of the wallet to change password.
-//				OLD_PASSWORD: (string) The wallets current password.
+//				$wallet_id   : (string) The wallet_id of the wallet to change password.
+//				$old_password: (string) The wallets current password.
 
-function cardano_update_spending_password(string $wallet_id, string $old_password) {
+function cardano_update_spending_password($wallet_id, $old_password) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
+
+        // API END POINT
         $end_point	= "/api/v1/wallets/" . $wallet_id . "/password";
-
-
 
         // CARDANO CLIENT CERTIFICATE
         $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
@@ -283,19 +291,19 @@ function cardano_update_spending_password(string $wallet_id, string $old_passwor
 // Function  : Update a wallets name and assurance level.
 // Parameters:
 //
-//				WALLET_ID   	: (string) The wallet_id of the wallet to change name and assurance level.
-//				ASSURANCE_LEVEL : (string) "normal" or "strict"
-//				WALLET_NAME     : (string) The wallets new name.
+//				$wallet_id   	: (string) The wallet_id of the wallet to change name and assurance level.
+//				$assurance_level:  (string) "normal" or "strict"
+//				$wallet_name    : (string) The wallets new name.
 //
 
-function cardano_update_wallet(string $wallet_id, string $assurance_level, string $wallet_name) {
+function cardano_update_wallet($wallet_id, $assurance_level, $wallet_name) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
+
+        // API END POINT
         $end_point	= "/api/v1/wallets/" . $wallet_id;
-
-
 
         // CARDANO CLIENT CERTIFICATE
         $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
@@ -350,17 +358,17 @@ function cardano_update_wallet(string $wallet_id, string $assurance_level, strin
 // Function  : Delete a wallet and all its associated accounts.
 // Parameters:
 //
-//				WALLET_ID   : (string) The wallet_id of the wallet to delete.
+//				$wallet_id   : (string) The wallet_id of the wallet to delete.
 //
 
-function cardano_delete_wallet(string $wallet_id) {
+function cardano_delete_wallet($wallet_id) {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
+
+        // API END POINT
         $end_point	= "/api/v1/wallets/" . $wallet_id;
-
-
 
         // CARDANO CLIENT CERTIFICATE
         $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
@@ -387,8 +395,8 @@ function cardano_delete_wallet(string $wallet_id) {
 
 
         // LET'S GET CURLY
-        $data       = curl_exec($curl);
-        $httpCode   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $data        = curl_exec($curl);
+        $http_code   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         // ERRORS
         if(curl_exec($curl) === false)
@@ -401,5 +409,18 @@ function cardano_delete_wallet(string $wallet_id) {
         curl_close($curl);
 
         // GIMME ALL YOUR DATA
-        return $data;
+        // -- THERE IS NO DATA TO RETURN, JUST A RESPONSE CODE --
+        // return $data;
+
+        // RESPOND TO CODE INSTEAD OF JSON DATA
+        if ($http_code == "204") {
+
+            echo "Deleted wallet: " . $wallet_id;
+        }
+
+        else {
+            echo "No wallet found.";
+
+        }
+
 }
