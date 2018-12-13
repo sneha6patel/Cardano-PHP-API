@@ -24,6 +24,11 @@ You'll need to have [Cardano SL node](https://github.com/input-output-hk/cardano
 **GETINFO**:
 
   1. Retrieves the dynamic information for this node.
+  
+  **HELPERS**:
+
+  1. ADA to Loveloace conversion.
+  2. Lovelace to ADA conversion.
 
 **SETTINGS**:
 
