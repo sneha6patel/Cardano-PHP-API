@@ -8,46 +8,62 @@ You'll need to have [Cardano SL node](https://github.com/input-output-hk/cardano
 
 # What This Can Do For You:
 
-**ACCOUNTS**: 
-  1. Retrieves a specific Account.
-  2. Update an Account for the given Wallet.
-  3. Deletes an Account.
-  4. Retrieves the full list of Accounts.
-  5. Creates a new Account for the given Wallet.
+**ADDRESSES**
 
-**ADDRESSES**:
+1. Returns a list of the addresses.
+2. Creates a new Address.
+3. Returns interesting information about an address, if available and valid.
 
-  1. Returns a list of the addresses.
-  2. Creates a new Address.
-  3. Returns interesting information about an address, if available and valid.
+**WALLETS**
 
-**GETINFO**:
+1. Returns a list of the available wallets.
+2. Creates a new or restores an existing Wallet.
+3. Updates the password for the given Wallet.
+4. Returns the Wallet identified by the given walletId.
+5. Update the Wallet identified by the given walletId.
+6. Deletes the given Wallet and all its accounts.
+7. Returns Utxo statistics for the Wallet identified by the given walletId.
 
-  1. Retrieves the dynamic information for this node.
-  
-  **HELPERS**:
+**ACCOUNTS**
 
-  1. ADA to Loveloace conversion.
-  2. Lovelace to ADA conversion.
+1. Retrieves a specific Account.
+2. Update an Account for the given Wallet.
+3. Deletes an Account.
+4. Retrieves the full list of Accounts.
+5. Creates a new Account for the given Wallet.
+6. Retrieve only account's addresses.
+7. Retrieve only account's balance.
 
-**SETTINGS**:
+**TRANSACTIONS**
 
-  1. Retrieves the static settings for this node.
+1. Returns the transaction history, i.e the list of all the past transactions.
+2. Generates a new transaction from the source to one or multiple target addresses.
+3. Estimate the fees which would originate from the payment.
+4. Redeem a certificate
 
-**TRANSACTIONS**:
+**SETTINGS**
 
-  1. Returns the transaction history, i.e the list of all the past transactions.
-  2. Generates a new transaction from the source to one or multiple target addresses.
-  3. Estimate the fees which would originate from the payment.
+1. Retrieves the static settings for this node.
 
-**WALLETS**:
+**INFO**
 
-  1. Returns a list of the available wallets.
-  2. Creates a new or restores an existing Wallet.
-  3. Updates the password for the given Wallet.
-  4. Returns the Wallet identified by the given walletId.
-  5. Update the Wallet identified by the given walletId.
-  6. Deletes the given Wallet and all its accounts.
+1. Retrieves the dynamic information for this node.
+
+**INTERNAL** (NOT AVAILABLE YET)
+
+1. Version of the next update (404 if none)
+2. Apply the next available update
+3. Discard and postpone the next available update
+4. Clear wallet state and all associated secret keys
+5. Import a Wallet from disk.
+
+**WIP** (NOT AVAILABLE YET)
+
+1. Check if this external wallet is presented in the node.
+2. Deletes the given external wallet and all its accounts.
+3. Creates a new or restores an existing external wallet (mobile client or hardware wallet).
+4. Creates a new unsigned transaction (it will be signed externally).
+5. Publish an externally-signed transaction.
 
 # How to use it..
 
