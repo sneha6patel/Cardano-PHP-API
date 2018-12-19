@@ -1,31 +1,23 @@
 <?php
 
-// GET ALL ADDRESSES IN WALLET
+// GET ALL ADDRESSES IN WALLET\
+// Function  : Returns a list of the addresses.
 // Parameters:
 //
-//          NONE
-//
-// Settings  :
-//
-//          $page    : (string) The page number you want to get accounts from.
-//          $per_page: (string) The number of entries per page. Value: 1 MIN to 50 MAX
-//
+//          $page          : (integer) The page number you want to get accounts from.
+//          $per_page      : (integer) The number of entries per page. Value: 1 MIN to 50 MAX
 //
 
-function cardano_get_all_addresses() {
+function cardano_get_all_addresses($page = "1", $per_page = "50") {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
 
-        // SETTINGS
-        $page = "1";
-        $per_page = "50";
-
         // CARDANO CLIENT CERTIFICATE
         $cert_path  = "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
-        // QUERY PARAMETERS
+        // SETTINGS (QUERY PARAMETERS)
         $settings = array(
 
                         "page"      => (integer)$page,
@@ -144,8 +136,8 @@ function cardano_create_address($wallet_id, $account_idx, $spending_password) {
 
         $post_fields = array(
                     "accountIndex"      => (integer)$account_idx,
-                    "walletId"          => $wallet_id,
-                    "spendingPassword"  => $spending_password
+                    "walletId"          => (string)$wallet_id,
+                    "spendingPassword"  => (string)$spending_password
                     );
 
         // INIT CURL

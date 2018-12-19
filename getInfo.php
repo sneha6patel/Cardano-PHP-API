@@ -2,27 +2,41 @@
 
 // GET CURRENT NODE INFO
 // Function  : Delete a wallet and all its associated accounts.
-// Parameters:
+// Parameters: 
 //
 //				NONE
 //
 
 
-function cardano_get_info() {
+function cardano_get_info($force_ntp = "false") {
 
 		// SETUP
 		$host 		= "https://127.0.0.1";
 		$port 		= "8090";
 
+        // SETTINGS (QUERY PARAMETERS)
+        $settings = array(
+
+                        "force_ntp_check"  => (boolean)$force_ntp
+                    );
+                    
+        $query      = http_build_query($settings);
+        
         // API END POINT
+        if ($force_ntp == "true") {
+            
+            $end_point = "/api/v1/node-info/?=" . $query;
+
+        }
+          
         $end_point	= "/api/v1/node-info";
 
         // CARDANO CLIENT CERTIFICATE
-        $cert_path	= "./cardano-sl/state-wallet-mainnet/tls/client/client.pem";
+        $cert_path	= "/var/www/1234ada/cardano-sl/state-wallet-mainnet/tls/client/client.pem";
 
         // INIT CURL
         $curl = curl_init();
-
+       
        	// OPTIONS
         curl_setopt($curl, CURLOPT_URL, $host.':'.$port.$end_point);
         curl_setopt($curl, CURLOPT_AUTOREFERER, TRUE);
@@ -34,11 +48,11 @@ function cardano_get_info() {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_SSLCERT, $cert_path);
 
-
+        
         // LET'S GET CURLY
         $data       = curl_exec($curl);
         $httpCode   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
+ 
         // ERRORS
         if(curl_exec($curl) === false)
         {
@@ -52,3 +66,4 @@ function cardano_get_info() {
         // GIMME ALL YOUR DATA
         return $data;
 }
+
