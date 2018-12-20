@@ -58,7 +58,8 @@ You'll need to have [Cardano SL node](https://github.com/input-output-hk/cardano
 5. Import a Wallet from disk.
 
 **WIP** (NOT AVAILABLE YET)
-Note: I don't have a hardware wallet to test these functions with, so for now, I am not going to include them until I get the hardware to test them with. 
+
+*Note: I don't have a hardware wallet to test these functions with, so for now, I am not going to include them until I get the hardware to test them with.*
 
 1. Check if this external wallet is presented in the node.
 2. Deletes the given external wallet and all its accounts.
