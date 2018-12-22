@@ -45,6 +45,11 @@ You'll need to have [Cardano SL node](https://github.com/input-output-hk/cardano
 
 1. Retrieves the static settings for this node.
 
+**HELPERS**
+
+1. Convert to ADA (Lovelace to ADA)
+2. Convert to Lovelace (ADA to Lovelace)
+
 **INFO**
 
 1. Retrieves the dynamic information for this node.
