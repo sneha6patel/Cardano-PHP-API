@@ -253,8 +253,6 @@ function cardano_estimate_transaction_fees($account_idx, $wallet_id, $destinatio
 		                    "spendingPassword"	=> (string)$spending_password
 	                    );
   
-    if (empty($destination_array)) { var_dump($destination_array); }
-
     // INIT CURL
     $curl       = curl_init();
    
